@@ -61,6 +61,10 @@ if __name__ == '__main__':
 
 `pip`和`pip3`是啥关系(?
 
+> 来自 [Wybxc](https://github.com/Wybxc) 的回答：
+> 因为 linux 某些系统预装了 python2，这时候 `pip` 命令指的是 python2 的 pip，用 `pip3` 可以强制指定为 python3 版本的 pip。
+> 如果不用 `pip3`，用 `python3 -m pip` 也是一样的。
+
 `pip list` 查看已安装列表
 
 `pip list --outdate` 查看可升级的包
