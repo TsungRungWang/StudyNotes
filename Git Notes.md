@@ -1,11 +1,11 @@
-### Git Notes
+# Git Notes
 
-#### Start-ups
+## Start-ups
 
 运行`git`
 
 - Linux: 直接在命令行里敲
-- Windows: 在`Git Bash`里敲命令
+- Windows: 在`Git Bash`里敲命令, 当然亲测在`Terminal`里面直接敲命令也是可以的
 
 > Windows Terminal 里面也能打开Git Bash
 
@@ -18,11 +18,15 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 `git config --global user.email "you@example.com"`
 `git config --global user.name "Your Name"`
 
+查看
+
+`git config --global --list`
 
 
 
+---
 
-#### 基本操作
+## 基本操作
 
 `init`
 
@@ -146,9 +150,9 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 
 
-#### 远程库
+## 远程库
 
-##### ssh
+### ssh
 
 在自己的用户主目录下(`~`)查看有没有`.ssh`目录
 
@@ -170,13 +174,15 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 
 
-##### 把本地仓库推送到远程
+### 把本地仓库推送到远程
 
 本地仓库关联到远程库
 
-`git remote add origin git@github.com(<server name>)/<account name or path>/<repo name>.git`
+`git remote add origin git@github.com(<server name>):<account name or path>/<repo name>.git`
 
-- `origin`: 远程库的名字
+- `origin`: 远程库的名字. 这个名字是你自己取的
+
+> 一个本地库可以关联到多个远程库
 
 
 
@@ -194,7 +200,7 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 
 
-##### 从远程库克隆
+### 从远程库克隆
 
 `git clone git@github.com(<server name>):<account name or path>/<repo name>.git`
 
@@ -204,7 +210,27 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 
 
-##### 基本操作
+### 自己搭远程库
+
+首先, 搞个树莓派或者其他电脑作服务器
+
+在这个服务器上创建一个名为`git`的用户
+
+> 注意, 这个用户不需要登陆, 也不需要权限. 它只是在`git@<IPaddress>`的时候用到
+>
+> 禁用`git`用户的shell登录: 编辑`/etc/passwd`, 找到类似`git:x:1001:1001:,,,:/home/git:/bin/bash`的一行, 改为`git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell`
+
+收集所有需要登录的用户的公钥, 就是他们自己的`id_rsa.pub`文件, 把所有公钥导入到`/home/git/.ssh/authorized_keys`文件里, 一行一个
+
+> 如果这个文件不存在就创建一个
+
+`# git init --bare <sample>.git` 初始化一个裸仓库. 裸仓库没有工作区, 纯粹是为了共享
+
+`# chown -R git:git <sample>.git` 把owner改为`git`
+
+
+
+### 基本操作
 
 查看远程库信息
 
@@ -214,13 +240,13 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 取消连接远程库
 
-`git remote rm <remote repo name>`
+`git remote rm origin(<remote repo name>)`
 
 - 注意, 这个操作不会删除远程库的内容, 只是取消连接
 
 
 
-#### 分支
+## 分支
 
 创建新的分支
 
@@ -230,17 +256,17 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 切换到分支
 
-`git branch switch <branchname>`
+`git switch <branchname>`
 
-或者`git branch checkout <branchname>`
+或者`git branch checkout <branchname>`(?)
 
 
 
 创建并切换
 
-`git branch checkout -b <branchname>`
+`git switch -c <branchname>`
 
-或者`git branch switch -c <branchname>`
+或者`git branch checkout -b <branchname>`
 
 
 
