@@ -61,7 +61,7 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 git的工作逻辑
 
-......
+TBC
 
 
 
@@ -94,11 +94,15 @@ git的工作逻辑
 
 
 
+重命名
+
+直接操作就行, 他会识别出来你在重命名
+
 ### 撤销修改
 
 `restore <file>`
 
-- 在修改被`add`之前, 丢弃工作区的改动
+- 在工作区做了修改, 还没被`add`, 不想要了
 - 这个操作是和`add`相对的. 比如, 你在工作区做了一个改动, 如果想保留, 就`add`; 不想保留, 就`restore`
 - 注意, 这个操作只能丢弃尚未被`add`到暂存区的改动. 比如, 先做了改动1, `add`了, 再做了改动2, 没有`add`. 此时用这个命令只能丢弃改动2
 - `checkout -- <file>`作用相同(?)
@@ -107,14 +111,13 @@ git的工作逻辑
 
 `checkout -- <file>`
 
-- 用版本库里的版本替换工作区的版本
+- 用版本库里的版本替换工作区的版本(?
 
 
 
 `restore --stage <file>`
 
-- 修改已经被`add`到暂存区, 但是还没有被`commit`
-- 把已经`add`的内容取消`add`
+- 修改已经被`add`到暂存区, 但是还没有被`commit`. 把已经`add`的内容取消`add`
 - 这个操作是和`add`相反的. 比如, 一个改动, 用`add`把改动从工作区添加到暂存区, 而`restore --stage`则把位于暂存区的改动回退到工作区
 - `reset HEAD <file>`作用相同(?)
 
@@ -171,11 +174,11 @@ git的工作逻辑
 `commit id`(版本号)
 
 - 是一个哈希值(SHA1)
-- 用的时候不需要写全, 写前几位就行
+- 用的时候不需要写全, 写前几位就行. 一般是给出前7位
 
 
 
-`reset`
+`reset --hard`
 
 - 版本回退
 - eg. `git reset --hard HEAD^`
@@ -248,9 +251,9 @@ git的工作逻辑
 
 - `<server>`: Github的是`github.com`, 树莓派的是`192.168.31.108` (currently)
 
-注意, 在GitHub上创建的仓库的默认分支叫`main`不叫`master`
+> 注意, 在GitHub上创建的仓库的默认分支叫`main`不叫`master`
 
-`clone`的repo会放在当前路径下(执行命令时的路径)
+`clone`的repo会放在当前路径下 (执行命令时的路径)
 
 
 
@@ -258,7 +261,7 @@ git的工作逻辑
 
 首先, 搞个树莓派或者其他电脑作服务器, 在这个服务器上创建一个名为`git`的用户
 
-> 注意, 这个用户不需要登陆, 也不需要权限. 它只是在`git@<IPaddress>`的时候用到
+> 注意, 这个用户不需要登陆, 也不需要权限. 它只是在`git@<server>`的时候用到
 >
 > 禁用`git`用户的shell登录: 编辑`/etc/passwd`, 找到类似`git:x:1001:1001:,,,:/home/git:/bin/bash`的一行, 改为`git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell`. 这样它一登陆成功就会自动退出
 
@@ -315,6 +318,8 @@ git的工作逻辑
 `git merge <branchname>`
 
 > 注意是合并到当前分支. 也就是说, 如果你当前在`beta`分支, 想把`beta`分支合并到`master`, 那你得先`git switch master`切换到`master`, 再`git merge beta`把`beta`合并到`master`, 再`git switch beta`切换回`beta`
+>
+> (有没有简便操作啊
 
 
 
