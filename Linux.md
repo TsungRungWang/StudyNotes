@@ -16,7 +16,7 @@
 
 `~` 当前登录用户的用户目录
 
-`*` 通配任意数量个字符(包含0个吗?), 单独用的话表示某目录下的全部文件
+`*` 通配(globbing)任意数量个字符(包含0个吗?), 单独用的话表示某目录下的全部文件
 
 `?` 通配一个字符
 
@@ -349,6 +349,7 @@ usermod -d /home/<newName> <newName>
 - 注意该命令是在电脑终端运行的, 不是在wsl上运行的(?)
 - 如果需要上传文件, 把后面两个参数对调即可
 - 如果需要下载整个文件夹, 加上`-r`
+- 地址如果使用ipv6的话, 要把地址用方括号`[]`括起来避免解析错误
 
 
 
@@ -364,5 +365,84 @@ usermod -d /home/<newName> <newName>
 
 
 
+## bash
+
+双引号括起来的为转义字符串, 单引号括起来的会原原本本输出
+
+`$varname`, 用来表示那个变量
+
+`$1` 表示第一个变量(类似`argv[]`)
+
+`source`, 使文件变得可执行(?
+
+`$?` error code. 一般来说如果是`0`说明程序运行正常
+
+`$_` 上一个命令中最后一个变量. 或者按住`Esc`再按`.`
+
+(注意如果要在命命令行里查看记得用`echo`)
+
+`!!` 上一条命令的全部内容
+
+​	经常用来`sudo !!`
 
 
+
+
+
+`grep` 用来查正则表达式
+
+​	`grep <content> <file>`
+
+
+
+`true` error code永远是`0`, `false` error code 永远是`1`
+
+
+
+`||`, 第一个执行错误(error code不为零), 第二个才会执行
+
+`&&`, 第一个执行正确(error code 为0), 第二个才会执行
+
+`;`, 第一个无论执行结果如何, 第二个都会执行
+
+
+
+`foo=$(pwd)`, 把输出结果赋值给变量
+
+或者类似地: `echo "We are in $(pwd)"`
+
+
+
+`$#` 命令的数量
+
+`$$` process ID
+
+`$@` 所有变量
+
+```bash
+for <something> in "$@"; do
+	<do something>
+done
+```
+
+`/dev/null`, 如果把输出重定向到这里就等于把输出丢弃
+
+`>` 重定向输出; `2>` 重定向标准错误输出
+
+注释用`#`
+
+
+
+`{}`, 用来展开(expand)
+
+`{1,2,3`, 枚举; `{a..j}`, 范围
+
+
+
+`touch` 如果文件不存在, 会创建一个文件
+
+
+
+---
+
+[Install GDAL on Ubuntu](https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html)

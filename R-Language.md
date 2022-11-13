@@ -296,7 +296,7 @@ switch(condition,
 #### 5.3 自定义函数
 
 ```R
-mufunction=function(a,b,c,d,...){
+myfunction=function(a,b,c,d,...){
     # do something
     return(# something)
 }

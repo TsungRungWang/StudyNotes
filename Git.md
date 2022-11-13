@@ -11,7 +11,13 @@
 
 VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完全摸清)
 
+### Run git in VS Code
 
+under construction
+
+
+
+### User config
 
 安装后第一次运行git时“自报家门”
 
@@ -32,6 +38,8 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 
 
 
+
+
 ## 基本操作
 
 ### 新建仓库
@@ -41,38 +49,43 @@ VS Code有Git插件, 可以方便地用下述某些功能. (不过我还没完�
 在当前目录下创建一个空仓库
 
 - 可以在非空目录下创建, 但是这个目录下的文件不会自动加入git的记录, 需要手动`add`&`commit`
-- (可以不在当前目录而是指定路径吗?)
+- (可以不在当前目录而是指定路径吗? 应该是可以的吧, 但是没啥必要好像)
 
 
 
-新建裸仓库
+#### 新建裸仓库
 
 `# git init --bare <sample>.git`
 
 - 裸仓库没有工作区
+- 用作远程仓库
 
 
 
-在GitHub中创建repo: 
+#### 在GitHub中创建repo
+
+Under construction
 
 
 
-### 修改
+## 修改
 
 git的工作逻辑
 
-TBC
+TBC...
 
 
 
-`add`
+
+
+### add
 
 - `git add <file>`
 - 用来把文件提交到`stage`(暂存区)
 
 
 
-`commit`
+### commit
 
 - `git commit -m "<note>"`
 - 把`stage`的所有内容提交到当前分支, 并做注释
@@ -81,7 +94,7 @@ TBC
 
 
 
-删除文件
+### 删除文件
 
 - 注意, 删除文件也算改动
 
@@ -94,7 +107,7 @@ TBC
 
 
 
-重命名
+### 重命名
 
 直接操作就行, 他会识别出来你在重命名
 
@@ -142,6 +155,7 @@ TBC
 - 查看提交历史, 由近到远
 - 会显示版本号, 作者信息, 时间, 以及`commit`时写的注释
 - 可加`--pretty=oneline`参数, 使输出更整洁
+- `git log --all --graph --decorate` 
 
 
 
@@ -157,7 +171,6 @@ TBC
 
 - 查看具体有什么改动
 - 显示的格式是Unix通用的`diff`格式
-- （这个咋用啊？？？
 
 
 
@@ -208,13 +221,13 @@ TBC
 
 ### 基本操作
 
-查看远程库信息
+#### 查看远程库信息
 
 `git remote -v`
 
 
 
-取消连接远程库
+#### 取消连接远程库
 
 `git remote rm origin(<remote repo name>)`
 
@@ -277,13 +290,13 @@ TBC
 
 ## 分支
 
-创建新的分支
+### 创建新的分支
 
 `git branch <branchname>`
 
 
 
-切换到分支
+### 切换到分支
 
 `git switch <branchname>`
 
@@ -291,7 +304,7 @@ TBC
 
 
 
-创建并切换
+### 创建并切换
 
 `git switch -c <branchname>`
 
@@ -299,13 +312,13 @@ TBC
 
 
 
-删除分支
+### 删除分支
 
 `git branch -d <branchname>`
 
 
 
-查看当前分支情况
+### 查看当前分支情况
 
 `git branch` 这个只能查看分支
 
@@ -313,13 +326,19 @@ TBC
 
 
 
-合并到当前分支
+### 合并到当前分支
 
 `git merge <branchname>`
 
 > 注意是合并到当前分支. 也就是说, 如果你当前在`beta`分支, 想把`beta`分支合并到`master`, 那你得先`git switch master`切换到`master`, 再`git merge beta`把`beta`合并到`master`, 再`git switch beta`切换回`beta`
 >
 > (有没有简便操作啊
+
+
+
+### 重命名分支
+
+`git branch -m <old> <new>`
 
 
 
