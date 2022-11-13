@@ -39,7 +39,7 @@
 
 #### $\chi^2$分布
 
-![chisqdistributionpdf](\image\chisqdistributionpdf.png)
+![chisqdistributionpdf](..\image\chisqdistributionpdf.png)
 
 全部在$y$轴右侧且呈右偏态. 
 
@@ -69,7 +69,7 @@ R语言计算临界值: `qt(p, df, lower.tail=TRUE)`. 这里`p`指的也是累�
 
 #### $F$分布
 
-![fdistributionpdf](\image\fdistributionpdf.png)
+![fdistributionpdf](..\image\fdistributionpdf.png)
 
 仅在$y$轴右侧. 有两个自由度$n_1,n_2$且==不可对调==. 
 
