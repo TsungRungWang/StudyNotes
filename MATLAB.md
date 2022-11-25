@@ -915,3 +915,62 @@ end
 
 `plotprofile`
 
+
+
+
+
+---
+
+## 11/23/2022新增
+
+`quiver`, 用来画箭头
+
+注意`scatter`画散点图的时候可以指定散点颜色, 大小和形式. 颜色的映射用`colormap`指定
+
+`clearvar -except keep...`清理除了`keep`之外的变量
+
+`diff`差分. 注意他可以计算高阶差分
+
+`tiledlayout`
+
+`sgtitle`给许多subplot添加总标题
+
+`maxk`计算前k个最大值(和它的下标)
+
+`xline`, 在指定`x`值位置画竖线. `yline`同理
+
+`findpeaks`, 需要`Signal Processing Toolbox`, 用来找local maxima的(还不清楚具体怎么用)
+
+
+
+`islocalmax`, 判断是不是局部最大值. `islocalmin`同理
+
+`cumsum`, 累加
+
+
+
+MATLAB自带`mad`函数, 但是要指定是mean还是median absolute deviation. 画Error bar的时候或许能用得上
+
+
+
+`nanmendian`, 相当于`median(~,'omitnan')`
+
+
+
+`azimuth`,算两点之间的方位角. 不过注意这个针对的是在真实的球体上, 所以有时候结果不一定是正西南西北/东南东北
+
+
+
+MATLAB里面是可以有连续函数的. 函数求解的一些方法: 
+
+- https://ww2.mathworks.cn/help/matlab/ref/fzero.html
+- https://ww2.mathworks.cn/help/matlab/ref/fminsearch.html
+
+查找单变量函数在指定区间内的最小值: https://ww2.mathworks.cn/help/matlab/ref/fminbnd.html
+
+
+
+
+
+---
+
