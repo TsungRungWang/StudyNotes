@@ -282,3 +282,16 @@ continue at lesson13
 
 ### 焦点统计
 
+
+
+
+
+---
+
+Set certain value to nodata and keep other values:
+
+Using [Raster Calculator](http://desktop.arcgis.com/en/arcmap/10.3/tools/spatial-analyst-toolbox/raster-calculator.htm) you can use [SetNull](http://desktop.arcgis.com/en/arcmap/latest/tools/spatial-analyst-toolbox/set-null.htm) tool as follows:
+
+```
+SetNull("RasterName"==0,"RasterName")
+```

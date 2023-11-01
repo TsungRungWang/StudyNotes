@@ -296,6 +296,14 @@ testCell =
 
 
 
+Add a column to a table: `tableName.newColumnName = columnData`
+
+忽略重复行: `unique(tableName)`
+
+删除行: `<whatYouWantToDelete> = []`
+
+
+
 ### 数据输入输出
 
 #### 读入数据
@@ -726,7 +734,7 @@ https://ww2.mathworks.cn/help/matlab/date-and-time-operations.html
 
 `ax1=axes;`
 
-然后后续作图时第一个参数要指定坐标区
+然后后续作图, 以及指定`colormap`, 绘制`colorbar`的时候, 第一个参数要指定坐标区
 
 再将两个坐标区连接起来
 
@@ -737,6 +745,10 @@ https://ww2.mathworks.cn/help/matlab/date-and-time-operations.html
 `ax2.Visible='off';ax2.XTick=[];ax2.YTick=[];`
 
 [参考页面](https://ww2.mathworks.cn/matlabcentral/answers/194554-how-can-i-use-and-display-two-different-colormaps-on-the-same-figure)
+
+> **As you can see, the messiest part of that is that you don't get automatic layout with two colorbars. That means that you need to position them yourself.**
+
+
 
 
 
@@ -822,7 +834,9 @@ decimal year是以闰年的1月1日中午12点为零点
 
 `decyear`
 
-`datestr`
+`datestr`: 日期格式的字符串的通配形式. `help datestr`里有所有日期时间格式的通配符
+
+`datetime`: 表示某一特定时间点. 输入时刻信息并指定输入时刻的字符串格式, 输出`datetime`格式的时刻数据
 
 `datevec`
 
@@ -854,7 +868,7 @@ decimal year是以闰年的1月1日中午12点为零点
 
 但是这个方法不能帮你读取数据
 
-与之对应的是`rmpath`
+与之相对的是`rmpath`
 
 `genpath`, 生成这个路径下的所有子路径
 
@@ -973,4 +987,22 @@ MATLAB里面是可以有连续函数的. 函数求解的一些方法:
 
 
 ---
+
+`kruskalwallis`
+
+`tabulate`
+
+
+
+
+
+
+
+
+
+
+
+---
+
+`figure('Renderer', 'painters', 'Position', [10 10 900 600])`
 
